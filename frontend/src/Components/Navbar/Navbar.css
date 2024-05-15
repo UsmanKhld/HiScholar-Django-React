@@ -1,0 +1,65 @@
+.sidenav {
+    width: 5rem;
+    background: rgb(255, 255, 255);
+    position: fixed;
+    height: 100%;
+    transition: width 200ms ease;
+    --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.sidenav-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    height: 100%;
+    margin-left: 1.5em;
+    
+}
+
+.sidenav-nav:last-child {
+    margin-top: auto;
+} 
+
+.link-text {
+    display: none;
+}
+
+.sidenav-link {
+    display: flex;
+    align-items: center;   
+    position: relative;
+    height: 3rem;
+    text-decoration: none;
+    color: blue;
+    margin-top: 1em;
+}
+
+.sidenav-link .sidenav-icons {
+    margin-right: 0.5em; /* Adjust icon margin as needed */
+}
+
+.sidenav-link .link-text {
+    position: absolute; /* Position text absolutely */
+    left: 5rem;
+    display: none;
+}
+
+.sidenav:hover {
+    width: 16rem;
+}
+
+.sidenav:hover .link-text {
+    display:block;
+    text-align: center;
+}
+
+.sidenav:hover .sidenav-icons {
+    
+}
+
+
