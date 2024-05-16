@@ -6,9 +6,9 @@ export const Scholarships = () => {
     <div>
       <Navbar /> 
       <main>
-        <h1>
+        <div className=' text-4xl text-blue-900'>
           Scholarships
-        </h1>
+        </div>
       </main>
     </div>
   )
