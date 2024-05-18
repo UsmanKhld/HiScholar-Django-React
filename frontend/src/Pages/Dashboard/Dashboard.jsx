@@ -50,7 +50,7 @@ export const Dashboard = () => {
     <div className=' bg-white h-screen'>
         <Navbar /> 
         <main>
-          <div className='card h-110 w-200 rounded-lg bg-blue-100 shadow-xl overflow-hidden overflow-y-auto'>
+          <div className='card hover:shadow-2xl hover:outline-1 hover:outline h-110 w-200 rounded-lg bg-blue-100 shadow-xl overflow-hidden overflow-y-auto'>
             <div className=' px-5 py-5 text-center '>
               <h1 className=' text-5xl mb-6 font-serif text-blue-900'>To-Do List</h1>
               <div className=' mb-5'>
