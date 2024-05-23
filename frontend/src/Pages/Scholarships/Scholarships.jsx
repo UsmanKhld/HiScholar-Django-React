@@ -21,8 +21,8 @@ export const Scholarships = () => {
           Scholarships
         </div>
         <div className="flex flex-col px-9 mt-11 h-screen w-120 border rounded-lg bg-blue-100 shadow-lg">
-          <p className="text-4xl text-blue-900 flex justify-center mt-10 mb-10">Filters</p>
-          <div className="flex mb-6">
+          <p className="text-4xl text-blue-900 flex justify-start mt-10 mb-10">Filters</p>
+          <div className="flex mb-6 absolute top-52">
             <div>
               <button
                 onClick={() => handleDropdownToggle('GPA')}
@@ -39,7 +39,7 @@ export const Scholarships = () => {
               </button>
 
               {openDropdown === 'GPA' && (
-                <div className="scrollbar-thin bg-blue-100 max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
+                <div className="scrollbar-thin bg-white max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
                   {GPA.map((item, i) => (
                     <div key={i}>
                       <p>{item.filter}</p>
@@ -64,7 +64,7 @@ export const Scholarships = () => {
               </button>
 
               {openDropdown === 'SAT' && (
-                <div className="scrollbar-thin bg-blue-100 max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
+                <div className="scrollbar-thin bg-white max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
                   {SAT.map((item, i) => (
                     <div key={i}>
                       <p>{item.filter}</p>
@@ -74,7 +74,7 @@ export const Scholarships = () => {
               )}
             </div>
           </div>
-          <div className="flex">
+          <div className="flex relative top-32 ">
             <div>
               <button
                 onClick={() => handleDropdownToggle('ACT')}
@@ -91,7 +91,7 @@ export const Scholarships = () => {
               </button>
 
               {openDropdown === 'ACT' && (
-                <div className="scrollbar-thin bg-blue-100 max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
+                <div className="scrollbar-thin bg-white max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
                   {ACT.map((item, i) => (
                     <div key={i}>
                       <p>{item.filter}</p>
@@ -116,7 +116,7 @@ export const Scholarships = () => {
               </button>
 
               {openDropdown === 'Race' && (
-                <div className="scrollbar-thin bg-blue-100 max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
+                <div className="scrollbar-thin bg-white max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
                   {Race.map((item, i) => (
                     <div key={i}>
                       <p>{item.filter}</p>
@@ -126,7 +126,7 @@ export const Scholarships = () => {
               )}
             </div>
           </div>
-          <div className="flex">
+          <div className="flex relative top-64 ">
             <div>
               <button
                 onClick={() => handleDropdownToggle('Major')}
@@ -143,7 +143,7 @@ export const Scholarships = () => {
               </button>
 
               {openDropdown === 'Major' && (
-                <div className="scrollbar-thin bg-blue-100 max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
+                <div className="scrollbar-thin bg-white max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
                   {Major.map((item, i) => (
                     <div key={i}>
                       <p>{item.filter}</p>
@@ -168,7 +168,7 @@ export const Scholarships = () => {
               </button>
 
               {openDropdown === 'State' && (
-                <div className="scrollbar-thin bg-blue-100 max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
+                <div className="scrollbar-thin bg-white max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
                   {State.map((item, i) => (
                     <div key={i}>
                       <p>{item.filter}</p>
@@ -178,11 +178,11 @@ export const Scholarships = () => {
               )}
             </div>
           </div>
-          <div className="flex">
+          <div className="flex relative top-96">
             <div>
               <button
                 onClick={() => handleDropdownToggle('Age')}
-                className="bg-white h-9 flex justify-between items-center border rounded-none border-black w-40"
+                className="bg-white h-9 flex justify-between items-center border rounded-none border-black w-40 "
               >
                 Age
                 <div className="flex justify-end">
@@ -195,7 +195,7 @@ export const Scholarships = () => {
               </button>
 
               {openDropdown === 'Age' && (
-                <div className="scrollbar-thin bg-blue-100 max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
+                <div className="scrollbar-thin bg-white max-h-20 w-40 overflow-y-auto border border-gray-300 mt-2">
                   {Age.map((item, i) => (
                     <div key={i}>
                       <p>{item.filter}</p>

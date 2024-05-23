@@ -24,8 +24,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/sign-up" element={<SignUpAndLogout />} />
             <Route path='/forgot-password' element={<ForgotPass />} />
-            {/* <Route path="/dashboard" element={<ProtectedRoute> <Dashboard  /> </ProtectedRoute>} /> */}
-            <Route path="/dashboard" element={ <Dashboard  />} />
+            <Route path="/dashboard" element={<ProtectedRoute> <Dashboard  /> </ProtectedRoute>} />
+            {/* <Route path="/dashboard" element={ <Dashboard  />} /> */}
             <Route path="/checklist" element={<Checklist  />} />
             <Route path="/counselor" element={<MyCounselor />} />
             <Route path="/points" element={<MyPoints />} />
