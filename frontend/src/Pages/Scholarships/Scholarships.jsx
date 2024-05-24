@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Navbar } from '../../Components/index'
 import { faCircleArrowUp, faCircleArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {GPA, SAT, ACT, Race, Major, State, Age} from './filters'
+import { GPA, SAT, ACT, Race, Major, State, Age } from './filters'
 import './Scholarships.css'
 
 export const Scholarships = () => {
