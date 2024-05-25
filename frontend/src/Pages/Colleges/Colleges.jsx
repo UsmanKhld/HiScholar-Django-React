@@ -7,17 +7,17 @@ export const Colleges = () => {
     <div>
       <Navbar />
       <main>
-        <div className="container mx-2 px-2 columns-2 box">
-          <div className="search">
-            <h1 class="font-bold underline mx-auto">
+        <div className="topnav grid grid-cols-2">
+          <div className="underline bold">
+            <h1>
               College Search
             </h1>
-            <form>
-              <input type="text" placeholder="Search by college name" class="w-full h-full"></input>
-            </form>
+          </div>
+          <div className="pl-10">
+            <input type="text" placeholder="Search by college name" className="h-full w-full pl-5 rounded-lg"></input>
           </div>
         </div>
-      </main >
+      </main>
     </div >
   )
 }
