@@ -6,7 +6,7 @@ import { faHouse, faListCheck, faSchool, faStar, faLandmark, faDollarSign, faGra
 export const Navbar = () => {
   return (
     <div>
-      <nav className='sidenav'>
+      <nav className='sidenav shadow-2xl outline outline-1'>
         <ul className='sidenav-nav'>
           <li className='sidenav-item'>
             <a href='/dashboard' className='sidenav-link'>
@@ -39,7 +39,7 @@ export const Navbar = () => {
           <li className='sidenav-item'>
             <a href='/financial-aid' className='sidenav-link'>
               <FontAwesomeIcon icon={faLandmark} className='sidenav-icons fa-2x' />
-              <span className='link-text'>Financial Aid</span>
+              <span className='link-text h-5 w-32'>Financial Aid</span>
             </a>
           </li>
 
