@@ -19,7 +19,7 @@ export const Dropdown = (props) => {
             <div className='dropdown_menu scrollbar-thin overflow-y-auto'>
                 {data.map((item, i) => (
                     <div key={i}>
-                        <p>{item.filter}</p>
+                        <div>{item.filter}</div>
                     </div>
                 ))}
             </div>
