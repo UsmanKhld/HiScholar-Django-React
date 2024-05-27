@@ -6,7 +6,7 @@ import { faHouse, faListCheck, faSchool, faStar, faLandmark, faDollarSign, faGra
 export const Navbar = () => {
   return (
     <div>
-      <nav className='sidenav shadow-2xl outline outline-1'>
+      <nav className='sidenav shadow-xl outline outline-1'>
         <ul className='sidenav-nav'>
           <li className='sidenav-item'>
             <a href='/dashboard' className='sidenav-link'>
