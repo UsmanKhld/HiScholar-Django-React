@@ -9,8 +9,8 @@ export const Dropdown = (props) => {
     const data = props.data;
 
   return (
-    <div className='relative'>
-        <div className='dropdown_container ' onClick={() => setIsOpen(!isOpen)}>
+    <div className='relative '>
+        <div className='dropdown_container hover:cursor-pointer' onClick={() => setIsOpen(!isOpen)}>
             {props.title}
             <FontAwesomeIcon className='flex justify-end mr-2 mt-1' icon={isOpen ? faCircleArrowUp : faCircleArrowDown} />
             

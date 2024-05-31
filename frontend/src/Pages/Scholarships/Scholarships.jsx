@@ -1,20 +1,20 @@
 import React, { useState } from 'react'
-import {ScDetails} from '../../Components/ScDetails/ScDetails'
-import { Navbar } from '../../Components/index'
+import { Navbar, ScDetails,Dropdown, ScItem } from '../../Components/index'
 import { faCircleArrowUp, faCircleArrowDown, faArrowUpWideShort } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { GPA, SAT, ACT, Race, Major, State, Age } from './filters'
 import './Scholarships.css'
-import Dropdown from '../../Components/Dropdown/Dropdown'
 import { ScLists } from './ScholarshipLists'
 
 export const Scholarships = () => {
 
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const handleDropdownToggle = (dropdown) => {
-    setOpenDropdown(prevState => (prevState === dropdown ? null : dropdown));
-  };
+  const handleItemClick = (sc) => {
+    setIsModalOpen(true);
+    setSelectedItem(sc);
+  }
 
   return (
     <div>
@@ -45,10 +45,13 @@ export const Scholarships = () => {
 
         <div className='w-full h-110 overflow-y-scroll hide_scrollbar'>
           {ScLists.map((sc, i) => (
-            <ScDetails sch={sc} key={i}/>
+            <ScDetails sch={sc} key={i} onClick={() => handleItemClick(sc)}/>
           ))}
         </div>
         
+        {selectedItem && isModalOpen && (
+          <ScItem sch={selectedItem} onClose={() => setIsModalOpen(false)} />
+        )}
         
       </main>
     </div>
