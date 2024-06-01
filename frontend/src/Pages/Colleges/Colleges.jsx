@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp } from "@fortawesome/free-regular-svg-icons";
@@ -6,6 +6,28 @@ import { Navbar } from '../../Components/index'
 import './Colleges.css'
 
 export const Colleges = () => {
+  const [college, setCollege] = React.useState([]);
+  const [searchTerm, setSearchTerm] = React.useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(
+        'https://parseapi.back4app.com/classes/Usuniversitieslist_University?count=1&limit=3202',
+        {
+          headers: {
+            'X-Parse-Application-Id': '6OHco8JSQp4s4FjxgA2JeoI0BOpEW01nhmLfGg9v', // This is your app's application id
+            'X-Parse-REST-API-Key': 'r3a509OxXqRPfaXMQcs3fGQm9pE1NjJIcaKFVly2', // This is your app's REST API key
+          }
+        }
+      );
+      const json = await result.json();
+      json.results.forEach((res) => {
+        console.log(res.name)
+        setCollege(res.name)
+      })
+    }
+    fetchData();
+  }, [])
   return (
     <div>
       <Navbar />
@@ -36,7 +58,7 @@ export const Colleges = () => {
                 <FontAwesomeIcon icon={faThumbsUp} className="fa-2x mr-3" />
               </div>
               <div className="p-1 col-span-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                {college}
               </div>
             </button>
 
