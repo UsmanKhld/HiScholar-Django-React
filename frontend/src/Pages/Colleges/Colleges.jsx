@@ -11,8 +11,9 @@ export const Colleges = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      try {
       const result = await fetch(
-        'https://parseapi.back4app.com/classes/Usuniversitieslist_University?count=1&limit=3202',
+        'https://parseapi.back4app.com/classes/Usuniversitieslist_University?limit=15',
         {
           headers: {
             'X-Parse-Application-Id': '6OHco8JSQp4s4FjxgA2JeoI0BOpEW01nhmLfGg9v', // This is your app's application id
@@ -21,13 +22,18 @@ export const Colleges = () => {
         }
       );
       const json = await result.json();
-      json.results.forEach((res) => {
-        console.log(res.name)
-        setCollege(res.name)
-      })
+        console.log("Fetched data:", json); // Log the fetched data
+        if (Array.isArray(json.results)) {
+          setCollege(json.results); // Set the state with the array of college objects
+        } else {
+          console.error("Unexpected data format:", json.results);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     }
     fetchData();
-  }, [])
+  }, []);
   return (
     <div>
       <Navbar />
@@ -50,19 +56,20 @@ export const Colleges = () => {
         </div>
         <div className="content grid grid-rows-2">
           <div className="colleges p-5 pl-10">
-            <div className="text-xl text-black">1000 Colleges Found</div>
+            <div className="text-xl text-black">{college.length} Colleges Found</div>
           </div>
-          <div className="college-card w-11/12 justify-self-center">
-            <button className="grid grid-cols-3 w-full">
-              <div className="justify-self-center self-center">
-                <FontAwesomeIcon icon={faThumbsUp} className="fa-2x mr-3" />
+          {college.map((c) => (
+              <div key={c.objectId} className="college-card w-11/12 justify-self-center mb-5">
+                <button className="grid grid-cols-3 w-full">
+                  <div className="justify-self-center self-center">
+                    <FontAwesomeIcon icon={faThumbsUp} className="fa-2x mr-3" />
+                  </div>
+                  <div className="p-1 col-span-2">
+                    {c.name} {/* Access the 'name' property of each college object */}
+                  </div>
+                </button>
               </div>
-              <div className="p-1 col-span-2">
-                {college}
-              </div>
-            </button>
-
-          </div>
+            ))}
         </div>
       </main>
     </div>
