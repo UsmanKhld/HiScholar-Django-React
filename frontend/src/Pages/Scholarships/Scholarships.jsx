@@ -38,7 +38,7 @@ export const Scholarships = () => {
           <button className='h-8 flex items-center justify-between w-28'>Sort <FontAwesomeIcon className='flex justify-end' icon={faArrowUpWideShort} /> </button>
           <p className=' ml-16 text-lg'>Due Date</p>
           <p className='flex-1 ml-24 text-lg'>Scolarship Name</p>
-          <p className='flex-1 ml-20 text-lg'>Amount</p>
+          <p className='flex-1 ml-80 text-lg'>Amount</p>
         </div>
 
         <hr className="border-t-2 border-gray-300 w-full mb-5" />

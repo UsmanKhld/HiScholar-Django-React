@@ -3,13 +3,17 @@ import './Scitem.css'
 
 export const ScItem = ({ sch, onClose }) => {
   return (
-    <div className="modal-backdrop" onClick={onClose}>
+    <div className="modal-backdrop" >
       <div className="modal-content">
-        <button onClick={onClose} className="close-button">Close</button>
-        <h2>{sch.title}</h2>
-        <p>Due Date: {sch.due}</p>
-        <p>Amount: {sch.amount}</p>
-        <p>Details: {sch.description}</p>
+        <div className='flex justify-between'>
+          <p className='text-2xl mb-7 font-bold'>{sch.title}</p>
+          <button onClick={onClose} className="close-button">X</button>
+        </div>
+        
+        <div className='w-full h-3/4 mb-7 '>
+          <p className='text-xl font-semibold mb-5'>Details:</p>
+          <p className='text-lg'>{sch.description}</p>
+        </div>
         <a href={sch.apply}><button className="apply-button">Apply</button></a>
       </div>
     </div>
