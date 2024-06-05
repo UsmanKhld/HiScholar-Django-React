@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Careers, Checklist, Colleges, Dashboard, FinancialAid, ForgotPass, Landing, Login, MyCounselor, MyPoints, Profile, Scholarships, SignUp, Volunteering } from './Pages/index';
 import './App.css'
 import ProtectedRoute from './Components/ProtectedRoute';
+import { ScLists } from './Pages/Scholarships/ScholarshipLists';
 
 function Logout() {
   localStorage.clear();
@@ -15,6 +16,30 @@ function SignUpAndLogout() {
 }
 
 function App() {
+
+  const [favorites, setFavorites] = useState(() => {
+    // Retrieve favorites from local storage if available
+    const savedFavorites = localStorage.getItem('favorites');
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
+
+  const handleFavoriteToggle = (scholarship) => {
+    setFavorites((prevFavorites) => {
+      const updatedFavorites = prevFavorites.includes(scholarship)
+        ? prevFavorites.filter((fav) => fav !== scholarship)
+        : [...prevFavorites, scholarship];
+      
+      // Save updated favorites to local storage
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      console.log("Updated favorites:", updatedFavorites);
+      return updatedFavorites;
+    });
+  };
+  
+  const clearFavorites = () => {
+    setFavorites([]);
+    localStorage.removeItem('favorites');
+  };
 
   return (
     <Router>
@@ -30,11 +55,11 @@ function App() {
             <Route path="/counselor" element={<MyCounselor />} />
             <Route path="/points" element={<MyPoints />} />
             <Route path="/financial-aid" element={<FinancialAid/>} />
-            <Route path="/scholarships" element={<Scholarships/>} />
+            <Route path="/scholarships" element={<Scholarships scholarships={ScLists} favorites={favorites} onToggleFavorite={handleFavoriteToggle}/>} />
             <Route path="/colleges" element={<Colleges/>} />
             <Route path="/careers" element={<Careers/>} />
             <Route path="/volunteering" element={<Volunteering/>} />
-            <Route path="/profile" element={<Profile/>} />
+            <Route path="/profile" element={<Profile favorites={favorites} clearFavorites={clearFavorites}/>} />
           </Routes>
         </div>
       </Router>

@@ -4,9 +4,8 @@ import { faCircleArrowUp, faCircleArrowDown, faArrowUpWideShort } from '@fortawe
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { GPA, SAT, ACT, Race, Major, State, Age } from './filters'
 import './Scholarships.css'
-import { ScLists } from './ScholarshipLists'
 
-export const Scholarships = () => {
+export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -44,8 +43,8 @@ export const Scholarships = () => {
         <hr className="border-t-2 border-gray-300 w-full mb-5" />
 
         <div className='w-full h-110 overflow-y-scroll hide_scrollbar'>
-          {ScLists.map((sc, i) => (
-            <ScDetails sch={sc} key={i} onClick={() => handleItemClick(sc)}/>
+          {scholarships.map((sc, i) => (
+            <ScDetails isFav={favorites.includes(sc)} onToggleFavorite={() => onToggleFavorite(sc)} sch={sc} key={i} onClick={() => handleItemClick(sc)}/>
           ))}
         </div>
         

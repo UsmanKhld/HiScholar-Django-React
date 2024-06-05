@@ -68,7 +68,7 @@ export const Dashboard = () => {
               <ol>
                 {tasks.map((task, index) => 
                   <li className='font-bold text-lg bg-gray-100 outline outline-1 rounded-md py-4 mb-5 flex items-center' key={index}>
-                    <FontAwesomeIcon onClick={() => deleteTask(index)} icon={faSquareCheck} className='fa-2x ml-3 hover:cursor-pointer text-blue-600 hover:scale-105' />
+                    <FontAwesomeIcon onClick={() => deleteTask(index)} icon={faSquareCheck} className='fa-2x ml-3 hover:cursor-pointer text-blue-600 hover:scale-105 transition-all' />
                     <span className='flex-1'>{task}</span>
                     <FontAwesomeIcon onClick={() => moveTaskUp(index)} icon={faArrowUp} className='fa-2x mr-3 hover:cursor-pointer text-green-600 hover:scale-105'/>
                     <FontAwesomeIcon onClick={() => moveTaskDown(index)} icon={faArrowDown} className='fa-2x mr-3 hover:cursor-pointer text-green-600 hover:scale-105'/>
