@@ -12,14 +12,16 @@ export const Profile = ({favorites, clearFavorites}) => {
       <main className='p-0'>
         <div className='profile_container'>
           <p className="profile_title text-4xl text-blue-900" >My Profile</p>
-          <div className='pic_container'></div>
-          <div className='info_card'>
-            <h1 className=' font-semibold'>Usman Khalid</h1>
+          <div className='pic_container'>
+            <div className='circle'></div>
+          </div>
+          <div className='info_card bg-blue-100'>
+            <h1 className=' ml-10 font-serif'>Usman Khalid</h1>
             <p className=' self-start mt-16 text-xl'>Email: usmanexample@gmail.com</p>
           </div>
           <div className='fav_sch p-2 bg-blue-100 shadow-lg hover:shadow-2xl hover:outline hover:outline-1'>
             <p className='text-xl text-blue-800 ml-2 '>Favorited scholarships</p>
-            <button className=' self-end mb-5' onClick={clearFavorites}>clear</button>
+            <button className=' self-end mb-5 hover:bg-blue-300 transition-all' onClick={clearFavorites}>clear</button>
             <ul className=' overflow-y-auto p-2'>
              {favorites.map((fav, index) => (
                 <li className=' flex items-center w-full h-10 bg-gray-100 outline outline-1 p-2 mb-1' key={index}>
@@ -30,7 +32,10 @@ export const Profile = ({favorites, clearFavorites}) => {
             </ul>
             
           </div>
-          <div className='fav_colleges'></div>
+          <div className='fav_colleges p-2 bg-blue-100 shadow-lg hover:shadow-2xl hover:outline hover:outline-1'>
+            <p className='text-xl text-blue-800 ml-2 '>Favorited colleges</p>
+            <button className=' self-end mb-5 hover:bg-blue-300 transition-all'>clear</button>
+          </div>
         </div>
       </main>
     </div>

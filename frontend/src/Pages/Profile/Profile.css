@@ -14,16 +14,25 @@
 
 .pic_container {
     grid-area: 2 / 1 / 4 / 2;
-    border-width: 2px;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
+.circle {
+    border-radius: 50%;
+    border-width: 1px;
+    height: 150px;
+    width: 150px;
+    border-color: black;
+    z-index: 1;
+    background-color: rgb(236, 236, 236);
+    margin-left: 20px;
+}
+
 .info_card {
-    grid-area: 4 / 1 / 8 / 2;
+    grid-area: 3 / 1 / 6 / 2;
     border-width: 2px;
-    
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -41,5 +50,8 @@
 
 .fav_colleges {
     grid-area: 5 / 2 / 8 / 3;
-    border-width: 2px;
+    border-width: 1px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }

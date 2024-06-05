@@ -4,7 +4,7 @@
     position: fixed;
     height: 100%;
     transition: width 300ms ease;
-    z-index: 1;
+    z-index: 100;
 }
 
 .sidenav-nav {
@@ -51,7 +51,7 @@
 
 .sidenav:hover {
     width: 16rem;
-    z-index: 1;
+    z-index: 100;
 }
 
 .sidenav:hover .link-text {
