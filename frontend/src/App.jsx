@@ -49,7 +49,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/sign-up" element={<SignUpAndLogout />} />
             <Route path='/forgot-password' element={<ForgotPass />} />
-            <Route path="/dashboard" element={<ProtectedRoute> <Dashboard  /> </ProtectedRoute>} />
+            <Route path="/dashboard" element={<ProtectedRoute> <Dashboard favorites={favorites} clearFavorites={clearFavorites}  /> </ProtectedRoute>} />
             {/* <Route path="/dashboard" element={ <Dashboard  />} /> */}
             <Route path="/checklist" element={<Checklist  />} />
             <Route path="/counselor" element={<MyCounselor />} />
