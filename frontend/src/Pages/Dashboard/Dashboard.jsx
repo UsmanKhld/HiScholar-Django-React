@@ -1,13 +1,18 @@
 import React, {useState} from 'react'
 import { Navbar } from '../../Components/index'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
-import { faSquareCheck } from '@fortawesome/free-regular-svg-icons'
+import { faArrowUp, faArrowDown, faHeartCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { faHeart, faSquareCheck } from '@fortawesome/free-regular-svg-icons'
 import './Dashboard.css'
 
-export const Dashboard = ({favorites, clearFavorites}) => {
+export const Dashboard = ({favorites, clearFavorites, onToggleFavorite}) => {
   const[tasks, setTasks] = useState([]);
   const[newTask, setNewTask] = useState("");
+  const [fav, setFav] = useState(false)
+
+  const handleFavClick = () => {
+    setFav(!fav)
+  }
 
   function handleInputChange(event) {
     setNewTask(event.target.value);
@@ -88,7 +93,8 @@ export const Dashboard = ({favorites, clearFavorites}) => {
               <button className=' self-end mb-5 hover:bg-blue-300 transition-all' onClick={clearFavorites}>clear</button>
               <ul className=' overflow-y-auto p-2'>
               {favorites.map((fav, index) => (
-                  <li className=' flex items-center w-full h-10 bg-gray-100 outline outline-1 p-2 mb-1' key={index}>
+                  <li className=' flex items-center w-full h-10 bg-gray-100 outline outline-1 p-2 py-8 mb-2' key={index}>
+                    <FontAwesomeIcon onClick={() => onToggleFavorite(fav)} icon={fav ? faHeartCircleCheck : faHeart}  className=' text-blue-800 fa-xl hover:cursor-pointer mr-2' />
                     <p className='flex-1'>{fav.title}</p>
                     <a href={fav.apply}><button className=' h-8 w-16 text-xs bg-blue-200 '>Apply</button></a>
                   </li>

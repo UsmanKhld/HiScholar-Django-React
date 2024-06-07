@@ -7,6 +7,7 @@ export const ScDetails = (props) => {
 
   const { sch, isFav, onToggleFavorite, onClick } = props;
 
+
   return (
     <div>
       <ol>

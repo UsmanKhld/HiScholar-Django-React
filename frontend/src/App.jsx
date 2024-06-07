@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Careers, Checklist, Colleges, Dashboard, FinancialAid, ForgotPass, Landing, Login, MyCounselor, MyPoints, Profile, Scholarships, SignUp, Volunteering } from './Pages/index';
 import './App.css'
@@ -17,25 +17,27 @@ function SignUpAndLogout() {
 
 function App() {
 
-  const [favorites, setFavorites] = useState(() => {
-    // Retrieve favorites from local storage if available
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
     const savedFavorites = localStorage.getItem('favorites');
-    return savedFavorites ? JSON.parse(savedFavorites) : [];
-  });
+    if (savedFavorites) {
+      setFavorites(JSON.parse(savedFavorites));
+    }
+  }, []);
 
   const handleFavoriteToggle = (scholarship) => {
     setFavorites((prevFavorites) => {
-      const updatedFavorites = prevFavorites.includes(scholarship)
-        ? prevFavorites.filter((fav) => fav !== scholarship)
+      const isFavorite = prevFavorites.some((fav) => fav.id === scholarship.id);
+      const updatedFavorites = isFavorite
+        ? prevFavorites.filter((fav) => fav.id !== scholarship.id)
         : [...prevFavorites, scholarship];
       
-      // Save updated favorites to local storage
       localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-      console.log("Updated favorites:", updatedFavorites);
       return updatedFavorites;
     });
   };
-  
+
   const clearFavorites = () => {
     setFavorites([]);
     localStorage.removeItem('favorites');
@@ -49,7 +51,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/sign-up" element={<SignUpAndLogout />} />
             <Route path='/forgot-password' element={<ForgotPass />} />
-            <Route path="/dashboard" element={<ProtectedRoute> <Dashboard favorites={favorites} clearFavorites={clearFavorites}  /> </ProtectedRoute>} />
+            <Route path="/dashboard" element={<ProtectedRoute> <Dashboard favorites={favorites} clearFavorites={clearFavorites} onToggleFavorite={handleFavoriteToggle} /> </ProtectedRoute>} />
             {/* <Route path="/dashboard" element={ <Dashboard  />} /> */}
             <Route path="/checklist" element={<Checklist  />} />
             <Route path="/counselor" element={<MyCounselor />} />
@@ -59,7 +61,7 @@ function App() {
             <Route path="/colleges" element={<Colleges/>} />
             <Route path="/careers" element={<Careers/>} />
             <Route path="/volunteering" element={<Volunteering/>} />
-            <Route path="/profile" element={<Profile favorites={favorites} clearFavorites={clearFavorites}/>} />
+            <Route path="/profile" element={<Profile favorites={favorites} clearFavorites={clearFavorites} onToggleFavorite={handleFavoriteToggle}/>} />
           </Routes>
         </div>
       </Router>

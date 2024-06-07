@@ -1,5 +1,6 @@
 export const ScLists = [
     {
+        id: 1,
         title: "Paul and Daisy Soros Fellowships for New Americans",
         due: "10/25/2024",
         amount: "$90,000",
@@ -7,6 +8,7 @@ export const ScLists = [
         description: "The Paul & Daisy Soros Fellowships for New Americans program recognizes the children of immigrants to the U.S. who are seeking a graduate degree on a full-time basis in the U.S. Students who are aged 30 or younger and are U.S citizens, permanent residents, refugees, asylees, or have DACA status are encouraged to apply. Recipients of this award should demonstrate drive, creativity, and a commitment to the values expressed in the U.S. Constitution and the Bill of Rights."
     },
     {
+        id: 2,
         title: "BigFuture Scholarships: Start Your Career List (Class of 2025)",
         due: "02/28/2025",
         amount: "$40,000",
@@ -14,6 +16,7 @@ export const ScLists = [
         description: "BigFuture Scholarships: Start Your Career List (Class of 2025) is available to current high school juniors. Students who save a list with three or more careers will earn entries into monthly drawings for $500 and $40,000. Students from lower-income families earn an extra entry in monthly drawings and have double the chances at a scholarship."
     },
     {
+        id: 3,
         title: "Thomas J. Watson Fellowship",
         due: "11/01/2024",
         amount: "$36,000",
@@ -21,6 +24,7 @@ export const ScLists = [
         description: "The Thomas J. Watson Fellowship encourages students to travel outside of the U.S. for one year to execute a project of personal interest. The goal of the fellowship is to support students' personal insight and inspire confidence as a leader. College seniors who are seeking a bachelor's degree at one of the 41 partner institutions are eligible for consideration. Interested students should meet with the designated campus advisor as this is a nomination-only fellowship that does not accept direct applications."
     },
     {
+        id: 4,
         title: "Richard L. Scott Scholarship",
         due: "06/01/2024",
         amount: "$26,000",
@@ -28,6 +32,7 @@ export const ScLists = [
         description: "The Richard L. Scott Scholarship is available to students enrolled in an undergraduate, graduate, or professional degree program. Applicants must complete an essay on the book 'An Examination of Conscience of the Understanding - Empirical Proof of the Existence of God' by Richard L. Scott. Students majoring in philosophy or theology receive special consideration."
     },
     {
+        id: 5,
         title: "Next Generation Scholarship",
         due: "08/08/2024",
         amount: "$25,000",
@@ -35,6 +40,7 @@ export const ScLists = [
         description: "The Next Generation Scholarship offers merit-based financial assistance to members of the National Retail Federation Student Association (NRFSA) who have a past or current internship or career in retail. College sophomores, juniors, or seniors seeking a professional certificate, associate, or bachelor's degree are welcome to apply. "
     },
     {
+        id: 6,
         title: "Central Intelligence Agency Undergraduate Scholarship",
         due: "06/27/2024",
         amount: "$25,000",
@@ -42,6 +48,7 @@ export const ScLists = [
         description: "The Central Intelligence Agency Undergraduate Scholarship provides scholarship/loans and work experience to high school seniors and college sophomores who would be interested in working for the Central Intelligence Agency (CIA) after graduation from college."
     },
     {
+        id: 7,
         title: "Media Alliance of Houston Scholarship",
         due: "05/24/2025",
         amount: "$5,000",

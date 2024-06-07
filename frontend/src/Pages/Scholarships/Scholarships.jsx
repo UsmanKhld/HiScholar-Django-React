@@ -44,7 +44,7 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
 
         <div className='w-full h-110 overflow-y-scroll hide_scrollbar'>
           {scholarships.map((sc, i) => (
-            <ScDetails isFav={favorites.includes(sc)} onToggleFavorite={() => onToggleFavorite(sc)} sch={sc} key={i} onClick={() => handleItemClick(sc)}/>
+            <ScDetails isFav={favorites.some(fav => fav.id === sc.id)} onToggleFavorite={() => onToggleFavorite(sc)} sch={sc} key={i} onClick={() => handleItemClick(sc)}/>
           ))}
         </div>
         
