@@ -152,7 +152,14 @@ export const Dashboard = ({ favorites, clearFavorites, onToggleFavorite }) => {
           </div>
 
           <div className="placeholder_card bg-blue-100 hover:shadow-2xl transition-all">
-            Placeholder
+            <div className="flex flex-col justify-center items-center text-center text-2xl">
+              <p className="font-bold">FAFSA DEADLINE:</p>
+              <p>April 15, 2024</p>
+            </div>
+            <div className="flex flex-col justify-center items-center text-center text-2xl">
+              <p className="font-bold">TASFA PRIORITY DEADLINE:</p>
+              <p>April 15, 2024</p>
+            </div>
           </div>
         </div>
       </main>
