@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "../../Components/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,6 +14,13 @@ export const Dashboard = ({ favorites, clearFavorites, onToggleFavorite }) => {
   const [newTask, setNewTask] = useState("");
   const [fav, setFav] = useState(false);
 
+  useEffect(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  }, []);
+
   const handleFavClick = () => {
     setFav(!fav);
   };
@@ -24,13 +31,18 @@ export const Dashboard = ({ favorites, clearFavorites, onToggleFavorite }) => {
 
   function addTask() {
     if (newTask.trim !== " ") {
-      setTasks((t) => [...t, newTask]);
+      setTasks((t) => {
+        const updatedTasks = [...t, newTask];
+        localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+        return updatedTasks;
+      });
       setNewTask("");
     }
   }
 
   function deleteTask(index) {
     const updatedTasks = tasks.filter((_, i) => i !== index);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
     setTasks(updatedTasks);
   }
 
@@ -93,18 +105,18 @@ export const Dashboard = ({ favorites, clearFavorites, onToggleFavorite }) => {
                     <FontAwesomeIcon
                       onClick={() => deleteTask(index)}
                       icon={faSquareCheck}
-                      className="fa-2x ml-3 hover:cursor-pointer text-blue-600 hover:scale-105 transition-all"
+                      className="fa-2x ml-3 hover:cursor-pointer text-blue-600 hover:scale-125 transition-all"
                     />
                     <span className="flex-1">{task}</span>
                     <FontAwesomeIcon
                       onClick={() => moveTaskUp(index)}
                       icon={faArrowUp}
-                      className="fa-2x mr-3 hover:cursor-pointer text-green-600 hover:scale-105"
+                      className="fa-2x mr-3 hover:cursor-pointer text-green-600 hover:scale-125 transition-all"
                     />
                     <FontAwesomeIcon
                       onClick={() => moveTaskDown(index)}
                       icon={faArrowDown}
-                      className="fa-2x mr-3 hover:cursor-pointer text-green-600 hover:scale-105"
+                      className="fa-2x mr-3 hover:cursor-pointer text-green-600 hover:scale-125 transition-all"
                     />
                   </li>
                 ))}
@@ -131,7 +143,7 @@ export const Dashboard = ({ favorites, clearFavorites, onToggleFavorite }) => {
                   <FontAwesomeIcon
                     onClick={() => onToggleFavorite(fav)}
                     icon={fav ? faHeartCircleCheck : faHeart}
-                    className=" text-blue-800 fa-xl hover:cursor-pointer mr-2"
+                    className=" text-blue-800 fa-xl hover:cursor-pointer mr-2 hover:scale-125 transition-all"
                   />
                   <p className="flex-1">{fav.title}</p>
                   <a href={fav.apply}>

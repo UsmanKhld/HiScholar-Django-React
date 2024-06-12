@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, ScDetails, Dropdown, ScItem } from "../../Components/index";
 import {
   faCircleArrowUp,
@@ -12,6 +12,24 @@ import "./Scholarships.css";
 export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [isSorted, setIsSorted] = useState(false);
+  const [sortedScholarships, setSortedScholarships] = useState([]);
+
+  useEffect(() => {
+    if (isSorted) {
+      const sorted = [...scholarships].sort((a, b) =>
+        a.title > b.title ? 1 : -1
+      );
+      setSortedScholarships(sorted);
+      console.log(sorted);
+    } else {
+      setSortedScholarships(scholarships);
+    }
+  }, [isSorted, scholarships]);
+
+  const alphaSort = () => {
+    setIsSorted(!isSorted);
+  };
 
   const handleItemClick = (sc) => {
     setIsModalOpen(true);
@@ -35,7 +53,10 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
         </div>
 
         <div className="scholarships_sort-container">
-          <button className="h-8 flex items-center justify-between w-28">
+          <button
+            className="h-8 flex items-center justify-between w-28"
+            onClick={alphaSort}
+          >
             Sort{" "}
             <FontAwesomeIcon
               className="flex justify-end"
@@ -50,7 +71,7 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
         <hr className="border-t-2 border-gray-300 w-full mb-5" />
 
         <div className="w-full h-200 overflow-y-scroll hide_scrollbar">
-          {scholarships.map((sc, i) => (
+          {sortedScholarships.map((sc, i) => (
             <ScDetails
               isFav={favorites.some((fav) => fav.id === sc.id)}
               onToggleFavorite={() => onToggleFavorite(sc)}
