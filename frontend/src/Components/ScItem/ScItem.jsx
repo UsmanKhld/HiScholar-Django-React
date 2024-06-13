@@ -5,16 +5,13 @@ export const ScItem = ({ sch, onClose }) => {
   return (
     <div className="modal-backdrop" >
       <div className="modal-content">
-        <div className='flex justify-between'>
-          <p className='text-2xl mb-7 font-bold'>{sch.title}</p>
-          <button onClick={onClose} className="close-button">X</button>
-        </div>
+        <p className='modal-title text-2xl font-bold'>{sch.title}</p>
+        <button onClick={onClose} className="close-button">X</button>
+        <p className='modal-amount'><b className='text-xl'>Amount:</b> {sch.amount}</p>
         
-        <div className='w-full h-3/4 mb-7 '>
-          <p className='text-xl font-semibold mb-5'>Details:</p>
-          <p className='text-lg'>{sch.description}</p>
-        </div>
-        <a href={sch.apply}><button className="apply-button">Apply</button></a>
+        <p className='text-xl font-semibold modal-details'>Details:</p>
+        <p className='text-lg modal-description'>{sch.description}</p>
+        <a href={sch.apply} className='modal-apply'><button className="apply-button">Apply</button></a>
       </div>
     </div>
   );

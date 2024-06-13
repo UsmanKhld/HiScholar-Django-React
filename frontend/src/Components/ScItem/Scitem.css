@@ -13,18 +13,39 @@
   
   .modal-content {
     background: white;
-    padding: 20px;
     border-radius: 8px;
-    width: 70%;
+    width: 70vw;
+    height: 70vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    display: grid;
+    gap: 10px;
+    padding: 20px;
+    grid-template-rows: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
   
+  .modal-title {
+    grid-area: 1 / 1 / 2 / 5;
+  }
+
   .close-button {
+    grid-area: 1 / 5 / 2 / 6;
+    display: flex;
+    justify-content: center;
+    align-items:center;
     font-size: 16px;
     cursor: pointer;
-    border-radius:100%;
-    padding: 7px;
-    height: fit-content;
+    width: 20px;
+    height: 40px;
+    border-radius: 100%;
+  }
+
+  .modal-details {
+    grid-area: 2 / 1 / 3 / 4;
+  }
+
+  .modal-description {
+    grid-area: 3 / 1 / 7 / 4;
   }
   
   .apply-button {
@@ -39,4 +60,8 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
+  }
+
+  .modal-apply {
+    grid-area: 7 / 1 / 8 / 4;
   }
