@@ -14,20 +14,22 @@ export const ScDetails = (props) => {
             <FontAwesomeIcon
               onClick={onToggleFavorite}
               icon={isFav ? faHeartCircleCheck : faHeart}
-              className=" text-blue-800 fa-2x hover:cursor-pointer"
+              className=" text-blue-800 fa-2x hover:cursor-pointer hover:scale-125 transition-all"
             />
           </div>
           <span className=" ml-28">{sch.due}</span>
           <span className="flex-1 ml-20">{sch.title}</span>
           <span className=" mr-64">{sch.amount}</span>
           <span
-            className="mr-10 text-base hover:underline hover:text-blue-700 hover:cursor-pointer"
+            className="mr-10 text-base hover:underline hover:text-blue-700 hover:cursor-pointer transition-all"
             onClick={onClick}
           >
             Details...
           </span>
           <a href={sch.apply}>
-            <button className="mr-10 bg-blue-200 ">Apply</button>
+            <button className="mr-10 bg-blue-200 hover:bg-blue-400 transition-all">
+              Apply
+            </button>
           </a>
         </li>
       </ol>

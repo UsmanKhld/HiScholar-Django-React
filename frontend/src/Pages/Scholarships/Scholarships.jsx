@@ -18,25 +18,27 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
 
   useEffect(() => {
     let filteredScholarships = [...scholarships];
-  
+
     // Apply GPA filter if gpaFilter is set
     if (gpaFilter !== "") {
       const filterValue = parseFloat(gpaFilter);
-      filteredScholarships = filteredScholarships.filter(scholarship => scholarship.gpa <= filterValue);
+      filteredScholarships = filteredScholarships.filter(
+        (scholarship) => scholarship.gpa <= filterValue
+      );
     }
-  
+
     // Apply sorting if isSorted is true
     if (isSorted) {
       filteredScholarships.sort((a, b) => (a.title > b.title ? 1 : -1));
     }
-  
+
     // Update sortedScholarships state
     setSortedScholarships(filteredScholarships);
   }, [scholarships, gpaFilter, isSorted]);
 
   useEffect(() => {
-    console.log(sortedScholarships)
-  }, [sortedScholarships])
+    console.log(sortedScholarships);
+  }, [sortedScholarships]);
 
   const alphaSort = () => {
     setIsSorted(!isSorted);
@@ -48,9 +50,8 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
   };
 
   const handleFilterClick = () => {
-    console.log(gpaFilter)
-  }
-
+    console.log(gpaFilter);
+  };
 
   return (
     <div>
@@ -59,7 +60,7 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
         <div className="text-4xl text-blue-900 ">Scholarships</div>
 
         <div className="filters_container flex justify-between ">
-          <Dropdown title="GPA" data={GPA} setGpaFilter={setGpaFilter}  />
+          <Dropdown title="GPA" data={GPA} setGpaFilter={setGpaFilter} />
           <Dropdown title="SAT" data={SAT} />
           <Dropdown title="ACT" data={ACT} />
           <Dropdown title="Race" data={Race} />
@@ -70,7 +71,11 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
 
         <div className="scholarships_sort-container">
           <button
-            className={isSorted ? "h-8 flex items-center justify-between w-28 bg-blue-300" : "h-8 flex items-center justify-between w-28"}
+            className={
+              isSorted
+                ? "h-8 flex items-center justify-between w-28 bg-blue-300"
+                : "h-8 flex items-center justify-between w-28"
+            }
             onClick={alphaSort}
           >
             Sort{" "}

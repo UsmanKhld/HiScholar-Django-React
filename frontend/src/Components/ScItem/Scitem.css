@@ -25,18 +25,21 @@
   }
   
   .modal-title {
-    grid-area: 1 / 1 / 2 / 5;
+    grid-area: 1 / 2 / 2 / 6;
+    display: flex;
+    width: 100%;
+    justify-self: self-end;
   }
 
   .close-button {
-    grid-area: 1 / 5 / 2 / 6;
+    grid-area: 1 / 1 / 2 / 2;
     display: flex;
     justify-content: center;
     align-items:center;
     font-size: 16px;
     cursor: pointer;
     width: 20px;
-    height: 40px;
+    height: 45px;
     border-radius: 100%;
   }
 
@@ -49,7 +52,6 @@
   }
   
   .apply-button {
-    background: #3d97ec;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -63,5 +65,21 @@
   }
 
   .modal-apply {
-    grid-area: 7 / 1 / 8 / 4;
+    grid-area: 7 / 3 / 8 / 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+  }
+
+  .modal-amount {
+    grid-area: 2 / 4 / 5 / 6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
   }

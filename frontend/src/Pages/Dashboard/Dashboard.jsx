@@ -9,7 +9,12 @@ import {
 import { faHeart, faSquareCheck } from "@fortawesome/free-regular-svg-icons";
 import "./Dashboard.css";
 
-export const Dashboard = ({ favorites, clearFavorites, onToggleFavorite }) => {
+export const Dashboard = ({
+  favorites,
+  clearFavorites,
+  onToggleFavorite,
+  collegeFavorites,
+}) => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
   const [fav, setFav] = useState(false);
@@ -161,6 +166,21 @@ export const Dashboard = ({ favorites, clearFavorites, onToggleFavorite }) => {
             <button className=" self-end mb-5 hover:bg-blue-300 transition-all">
               clear
             </button>
+            <ul className=" overflow-y-auto p-2">
+              {collegeFavorites.map((fav, index) => (
+                <li
+                  className=" flex items-center w-full h-10 bg-gray-100 outline outline-1 p-2 py-8 mb-2"
+                  key={index}
+                >
+                  <FontAwesomeIcon
+                    // onClick={() => onToggleFavorite(fav)}
+                    icon={fav ? faHeartCircleCheck : faHeart}
+                    className=" text-blue-800 fa-xl hover:cursor-pointer mr-2 hover:scale-125 transition-all"
+                  />
+                  <p className="flex-1">{fav.name}</p>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div className="placeholder_card bg-blue-100 hover:shadow-2xl transition-all">
