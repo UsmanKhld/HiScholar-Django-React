@@ -14,18 +14,29 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isSorted, setIsSorted] = useState(false);
   const [sortedScholarships, setSortedScholarships] = useState([]);
+  const [gpaFilter, setGpaFilter] = useState(4);
 
   useEffect(() => {
-    if (isSorted) {
-      const sorted = [...scholarships].sort((a, b) =>
-        a.title > b.title ? 1 : -1
-      );
-      setSortedScholarships(sorted);
-      console.log(sorted);
-    } else {
-      setSortedScholarships(scholarships);
+    let filteredScholarships = [...scholarships];
+  
+    // Apply GPA filter if gpaFilter is set
+    if (gpaFilter !== "") {
+      const filterValue = parseFloat(gpaFilter);
+      filteredScholarships = filteredScholarships.filter(scholarship => scholarship.gpa <= filterValue);
     }
-  }, [isSorted, scholarships]);
+  
+    // Apply sorting if isSorted is true
+    if (isSorted) {
+      filteredScholarships.sort((a, b) => (a.title > b.title ? 1 : -1));
+    }
+  
+    // Update sortedScholarships state
+    setSortedScholarships(filteredScholarships);
+  }, [scholarships, gpaFilter, isSorted]);
+
+  useEffect(() => {
+    console.log(sortedScholarships)
+  }, [sortedScholarships])
 
   const alphaSort = () => {
     setIsSorted(!isSorted);
@@ -36,6 +47,11 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
     setSelectedItem(sc);
   };
 
+  const handleFilterClick = () => {
+    console.log(gpaFilter)
+  }
+
+
   return (
     <div>
       <Navbar />
@@ -43,7 +59,7 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
         <div className="text-4xl text-blue-900 ">Scholarships</div>
 
         <div className="filters_container flex justify-between ">
-          <Dropdown title="GPA" data={GPA} />
+          <Dropdown title="GPA" data={GPA} setGpaFilter={setGpaFilter}  />
           <Dropdown title="SAT" data={SAT} />
           <Dropdown title="ACT" data={ACT} />
           <Dropdown title="Race" data={Race} />
@@ -54,7 +70,7 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
 
         <div className="scholarships_sort-container">
           <button
-            className="h-8 flex items-center justify-between w-28"
+            className={isSorted ? "h-8 flex items-center justify-between w-28 bg-blue-300" : "h-8 flex items-center justify-between w-28"}
             onClick={alphaSort}
           >
             Sort{" "}

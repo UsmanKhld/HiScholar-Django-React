@@ -1,12 +1,8 @@
 export const GPA = [
     { filter: "4.0" },
-    { filter: "3.75" },
     { filter: "3.5" },
-    { filter: "3.25" },
     { filter: "3.0" },
-    { filter: "2.75" },
     { filter: "2.5" },
-    { filter: "2.25" },
     { filter: "2.0" },
   ];
 
