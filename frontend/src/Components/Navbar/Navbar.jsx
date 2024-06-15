@@ -19,7 +19,7 @@ export const Navbar = () => {
   return (
     <div>
       <nav className="sidenav shadow-xl outline outline-1">
-        <ul className="sidenav-nav">
+        <ul className="sidenav-nav overflow-y-auto">
           <li className="sidenav-item">
             <a href="/dashboard" className="sidenav-link">
               <FontAwesomeIcon icon={faHouse} className="sidenav-icons fa-2x" />

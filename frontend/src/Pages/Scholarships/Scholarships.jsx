@@ -15,6 +15,7 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
   const [isSorted, setIsSorted] = useState(false);
   const [sortedScholarships, setSortedScholarships] = useState([]);
   const [gpaFilter, setGpaFilter] = useState(4);
+  const [isDropOpen, setIsDropOpen] = useState(false);
 
   useEffect(() => {
     let filteredScholarships = [...scholarships];
@@ -39,6 +40,10 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
   useEffect(() => {
     console.log(sortedScholarships);
   }, [sortedScholarships]);
+
+  const handleDropOpen = () => {
+    setIsDropOpen(!isDropOpen)
+  }
 
   const alphaSort = () => {
     setIsSorted(!isSorted);
@@ -70,23 +75,32 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
         </div>
 
         <div className="scholarships_sort-container">
-          <button
-            className={
-              isSorted
-                ? "h-8 flex items-center justify-between w-28 bg-blue-300"
-                : "h-8 flex items-center justify-between w-28"
-            }
-            onClick={alphaSort}
-          >
-            Sort{" "}
-            <FontAwesomeIcon
-              className="flex justify-end"
-              icon={faArrowUpWideShort}
-            />{" "}
-          </button>
-          <p className=" ml-16 text-lg">Due Date</p>
-          <p className="flex-1 ml-24 text-lg">Scolarship Name</p>
-          <p className="flex-1 ml-80 text-lg">Amount</p>
+          <div>
+            <button
+              className={
+                isSorted
+                  ? "h-8 flex items-center justify-between w-28 bg-blue-300"
+                  : "h-8 flex items-center justify-between w-28"
+              }
+              onClick={handleDropOpen}
+            >
+              Sort{" "}
+              <FontAwesomeIcon
+                className="flex justify-end"
+                icon={faArrowUpWideShort}
+              />{" "}
+            </button>
+            {isDropOpen && (
+                <div className="bg-blue-200 w-28 rounded-lg ">
+                  <p className="p-2 z-10">A - Z</p>
+                  <p className="p-2">Amount</p>
+                </div>
+              )}
+          </div>
+          
+          <p className=" col-span-1 text-lg">Due Date</p>
+          <p className=" col-span-3 text-lg">Scolarship Name</p>
+          <p className="text-lg">Amount</p>
         </div>
 
         <hr className="border-t-2 border-gray-300 w-full mb-5" />
