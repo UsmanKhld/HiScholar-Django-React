@@ -9,12 +9,12 @@ import "./Dropdown.css";
 export const Dropdown = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState("");
-  const { data, setGpaFilter } = props;
+  const { data, setFilter } = props;
 
   const handleFClick = (filter) => {
     console.log("handleFClick called with filter:", filter);
     const parsedFilter = parseFloat(filter, 10); // Convert the string filter to a float
-    setGpaFilter(parsedFilter);
+    setFilter(parsedFilter);
     setSelectedFilter(parsedFilter);
     setIsOpen(false); // Close dropdown after selection
   };

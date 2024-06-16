@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeartCircleCheck } from "@fortawesome/free-solid-svg-icons";
-import './ScDetails.css'
+import "./ScDetails.css";
 
 export const ScDetails = (props) => {
   const { sch, isFav, onToggleFavorite, onClick } = props;
@@ -14,7 +14,7 @@ export const ScDetails = (props) => {
           <FontAwesomeIcon
             onClick={onToggleFavorite}
             icon={isFav ? faHeartCircleCheck : faHeart}
-            className="col-span-1 fa-2x heart-icon hover:scale-125 transition-all"
+            className="col-span-1 fa-2x heart-icon hover:scale-125 transition-all hover:cursor-pointer"
           />
           <span className=" ">{sch.due}</span>
           <span className="col-span-3">{sch.title}</span>

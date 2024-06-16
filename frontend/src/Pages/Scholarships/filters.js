@@ -7,23 +7,24 @@ export const GPA = [
   ];
 
   export const SAT = [
-    { filter: "> 1500" },
-    { filter: "> 1400" },
-    { filter: "> 1300" },
-    { filter: "> 1200" },
-    { filter: "> 1100" },
-    { filter: "> 1000" },
-    { filter: "> 900" },
-    { filter: "< 900" },
+    { filter: "1600" },
+    { filter: "1500" },
+    { filter: "1400" },
+    { filter: "1300" },
+    { filter: "1200" },
+    { filter: "1100" },
+    { filter: "1000" },
+    { filter: "900" },
+    
   ];
 
   export const ACT = [
-    { filter: "> 34" },
-    { filter: "> 30" },
-    { filter: "> 26" },
-    { filter: "> 22" },
-    { filter: "> 18" },
-    { filter: "< 18" },
+    { filter: "34" },
+    { filter: "30" },
+    { filter: "26" },
+    { filter: "22" },
+    { filter: "18" },
+    { filter: "18" },
   ];
 
   export const Race = [

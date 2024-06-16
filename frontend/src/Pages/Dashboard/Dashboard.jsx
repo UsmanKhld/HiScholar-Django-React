@@ -152,7 +152,7 @@ export const Dashboard = ({
                   />
                   <p className="flex-1">{fav.title}</p>
                   <a href={fav.apply}>
-                    <button className=" h-8 w-16 text-xs bg-blue-200 ">
+                    <button className="h-10 w-16 text-xs bg-blue-200 hover:bg-blue-400 transition-all">
                       Apply
                     </button>
                   </a>

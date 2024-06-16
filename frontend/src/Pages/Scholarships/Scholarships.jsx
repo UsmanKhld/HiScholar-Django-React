@@ -13,9 +13,11 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isSorted, setIsSorted] = useState(false);
+  const [isAmounttSorted, setIsAmountSorted] = useState(false);
   const [sortedScholarships, setSortedScholarships] = useState([]);
   const [gpaFilter, setGpaFilter] = useState(4);
   const [isDropOpen, setIsDropOpen] = useState(false);
+  const [satFilter, setSatFilter] = useState(1600);
 
   useEffect(() => {
     let filteredScholarships = [...scholarships];
@@ -28,34 +30,45 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
       );
     }
 
+    if (satFilter !== "") {
+      const filterValue = parseFloat(gpaFilter);
+      filteredScholarships = filteredScholarships.filter(
+        (scholarship) => scholarship.gpa <= filterValue
+      );
+    }
+
     // Apply sorting if isSorted is true
     if (isSorted) {
       filteredScholarships.sort((a, b) => (a.title > b.title ? 1 : -1));
     }
 
+    if (isAmounttSorted) {
+      filteredScholarships.sort((a, b) => (a.amount < b.amount ? 1 : -1));
+    }
+
     // Update sortedScholarships state
     setSortedScholarships(filteredScholarships);
-  }, [scholarships, gpaFilter, isSorted]);
+  }, [scholarships, gpaFilter, isSorted, isAmounttSorted]);
 
   useEffect(() => {
     console.log(sortedScholarships);
   }, [sortedScholarships]);
 
   const handleDropOpen = () => {
-    setIsDropOpen(!isDropOpen)
-  }
+    setIsDropOpen(!isDropOpen);
+  };
 
   const alphaSort = () => {
     setIsSorted(!isSorted);
   };
 
+  const amountSort = () => {
+    setIsAmountSorted(!isAmounttSorted);
+  };
+
   const handleItemClick = (sc) => {
     setIsModalOpen(true);
     setSelectedItem(sc);
-  };
-
-  const handleFilterClick = () => {
-    console.log(gpaFilter);
   };
 
   return (
@@ -65,8 +78,8 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
         <div className="text-4xl text-blue-900 ">Scholarships</div>
 
         <div className="filters_container flex justify-between ">
-          <Dropdown title="GPA" data={GPA} setGpaFilter={setGpaFilter} />
-          <Dropdown title="SAT" data={SAT} />
+          <Dropdown title="GPA" data={GPA} setFilter={setGpaFilter} />
+          <Dropdown title="SAT" data={SAT} setFilter={setSatFilter} />
           <Dropdown title="ACT" data={ACT} />
           <Dropdown title="Race" data={Race} />
           <Dropdown title="Major" data={Major} />
@@ -78,26 +91,44 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
           <div>
             <button
               className={
-                isSorted
-                  ? "h-8 flex items-center justify-between w-28 bg-blue-300"
-                  : "h-8 flex items-center justify-between w-28"
+                isSorted || isAmounttSorted
+                  ? "h-8 flex items-center justify-between w-40 bg-blue-300"
+                  : "h-8 flex items-center justify-between w-40"
               }
               onClick={handleDropOpen}
             >
-              Sort{" "}
+              Sort
               <FontAwesomeIcon
                 className="flex justify-end"
                 icon={faArrowUpWideShort}
               />{" "}
             </button>
             {isDropOpen && (
-                <div className="bg-blue-200 w-28 rounded-lg ">
-                  <p className="p-2 z-10">A - Z</p>
-                  <p className="p-2">Amount</p>
-                </div>
-              )}
+              <div className="bg-blue-100 border border-black w-40 rounded-lg z-10">
+                <p
+                  className={
+                    isSorted
+                      ? "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all bg-blue-300"
+                      : "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all"
+                  }
+                  onClick={alphaSort}
+                >
+                  A - Z
+                </p>
+                <p
+                  className={
+                    isAmounttSorted
+                      ? "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all bg-blue-300"
+                      : "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all"
+                  }
+                  onClick={amountSort}
+                >
+                  Amount
+                </p>
+              </div>
+            )}
           </div>
-          
+
           <p className=" col-span-1 text-lg">Due Date</p>
           <p className=" col-span-3 text-lg">Scolarship Name</p>
           <p className="text-lg">Amount</p>
