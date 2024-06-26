@@ -18,10 +18,24 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
   const [gpaFilter, setGpaFilter] = useState(4);
   const [isDropOpen, setIsDropOpen] = useState(false);
   const [satFilter, setSatFilter] = useState(1600);
+  const [actFilter, setActFilter] = useState(34);
 
   useEffect(() => {
     let filteredScholarships = [...scholarships];
 
+    if (actFilter !== "") {
+      const filterValue = parseFloat(actFilter);
+      filteredScholarships = filteredScholarships.filter(
+        (scholarship) => scholarship.act <= filterValue
+      );
+    }
+
+    if (satFilter !== "") {
+      const filterValue = parseFloat(satFilter);
+      filteredScholarships = filteredScholarships.filter(
+        (scholarship) => scholarship.sat <= filterValue
+      );
+    }
     // Apply GPA filter if gpaFilter is set
     if (gpaFilter !== "") {
       const filterValue = parseFloat(gpaFilter);
@@ -48,7 +62,14 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
 
     // Update sortedScholarships state
     setSortedScholarships(filteredScholarships);
-  }, [scholarships, gpaFilter, isSorted, isAmounttSorted]);
+  }, [
+    scholarships,
+    gpaFilter,
+    isSorted,
+    isAmounttSorted,
+    satFilter,
+    actFilter,
+  ]);
 
   useEffect(() => {
     console.log(sortedScholarships);
@@ -80,7 +101,7 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
         <div className="filters_container flex justify-between ">
           <Dropdown title="GPA" data={GPA} setFilter={setGpaFilter} />
           <Dropdown title="SAT" data={SAT} setFilter={setSatFilter} />
-          <Dropdown title="ACT" data={ACT} />
+          <Dropdown title="ACT" data={ACT} setFilter={setActFilter} />
           <Dropdown title="Race" data={Race} />
           <Dropdown title="Major" data={Major} />
           <Dropdown title="State" data={State} />
@@ -104,7 +125,7 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
               />{" "}
             </button>
             {isDropOpen && (
-              <div className="bg-blue-100 border border-black w-40 rounded-lg z-10">
+              <div className="bg-blue-100 border border-black w-40 rounded-lg z-50">
                 <p
                   className={
                     isSorted
@@ -118,8 +139,8 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
                 <p
                   className={
                     isAmounttSorted
-                      ? "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all bg-blue-300"
-                      : "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all"
+                      ? "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all bg-blue-300 z-50"
+                      : "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all z-50"
                   }
                   onClick={amountSort}
                 >

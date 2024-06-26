@@ -14,7 +14,7 @@ export const ScItem = ({ sch, onClose }) => {
         </button>
         <div className="modal-amount">
           <p className="text-2xl mb-3">Award Amount:</p>
-          <p className="text-5xl font-bold text-blue-900">{sch.amount}</p>
+          <p className="text-5xl font-bold text-blue-900">${sch.amount}</p>
         </div>
 
         <p className="text-xl font-semibold modal-details">Details:</p>
@@ -24,6 +24,13 @@ export const ScItem = ({ sch, onClose }) => {
             Apply now!
           </button>
         </a>
+
+        <div className="modal-requirements">
+          <h2>Requirements:</h2>
+          <p>GPA: {sch.gpa}</p>
+          <p>SAT: {sch.sat}</p>
+          <p>ACT: {sch.act}</p>
+        </div>
       </div>
     </div>
   );
