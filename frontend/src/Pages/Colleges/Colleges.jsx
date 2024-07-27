@@ -83,16 +83,16 @@ export const Colleges = () => {
           />
         </button>
 
-        <p className="mr-16 text-2xl font-bold mb-6 ml-5">College List</p>
+        <p className="mr-16 text-2xl mb-6 ml-5">College List</p>
 
         <hr className="border-t-2 border-gray-300 w-full mb-5" />
 
         <div>
-          <div className="colleges p-5 pl-10">
+          {/* <div className="colleges p-5 pl-10">
             <div className="text-xl text-black">
               {college.length} Colleges Found
             </div>
-          </div>
+          </div> */}
 
           <div className="h-screen w-full overflow-y-scroll px-10">
             {college.map((c) => (

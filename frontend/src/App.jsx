@@ -14,6 +14,7 @@ import {
   ForgotPass,
   Landing,
   Login,
+  Majors,
   MyCounselor,
   MyPoints,
   Profile,
@@ -100,6 +101,7 @@ function App() {
           />
           <Route path="/colleges" element={<Colleges />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/majors" element={<Majors />} />
           <Route path="/volunteering" element={<Volunteering />} />
           <Route
             path="/profile"

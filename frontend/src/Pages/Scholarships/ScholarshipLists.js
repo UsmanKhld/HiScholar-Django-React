@@ -8,6 +8,7 @@ export const ScLists = [
         gpa: "3.75",
         sat: "1500",
         act: "30",
+        state: "TX",
         description: "The Paul & Daisy Soros Fellowships for New Americans program recognizes the children of immigrants to the U.S. who are seeking a graduate degree on a full-time basis in the U.S. Students who are aged 30 or younger and are U.S citizens, permanent residents, refugees, asylees, or have DACA status are encouraged to apply. Recipients of this award should demonstrate drive, creativity, and a commitment to the values expressed in the U.S. Constitution and the Bill of Rights."
     },
     {

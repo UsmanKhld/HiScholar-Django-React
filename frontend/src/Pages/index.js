@@ -12,6 +12,7 @@ import { Landing } from "./Landing/Landing";
 import { Login } from './Login/Login';
 import { SignUp } from './SignUp/SignUp';
 import { ForgotPass } from './ForgotPass/ForgotPass'
+import { Majors } from './Majors/Majors'
 
 export {
     Dashboard,
@@ -28,4 +29,5 @@ export {
     Login,
     SignUp,
     ForgotPass,
+    Majors
 };

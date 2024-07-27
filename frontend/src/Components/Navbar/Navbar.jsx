@@ -90,7 +90,7 @@ export const Navbar = () => {
                 icon={faBriefcase}
                 className="sidenav-icons fa-2x"
               />
-              <span className="link-text">Careers</span>
+              <span className="link-text">Majors/Careers</span>
             </a>
           </li>
 

@@ -1,22 +1,22 @@
 import React from "react";
 import { Navbar } from "../../Components/index";
 
-export const Careers = () => {
+export const Majors = () => {
   return (
     <div>
       <Navbar />
       <main>
         <div className="w-full flex justify-center items-center space-x-32">
-          <p className="text-4xl text-blue-900 hover:cursor-pointer">Careers</p>
-          <a href="/majors">
+          <a href="/careers">
             <p className="text-4xl text-blue-200 hover:cursor-pointer hover:text-blue-500 transition-all">
-              Majors
+              Careers
             </p>
           </a>
+          <p className="text-4xl text-blue-900 hover:cursor-pointer ">Majors</p>
         </div>
       </main>
     </div>
   );
 };
 
-export default Careers;
+export default Majors;

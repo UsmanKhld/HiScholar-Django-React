@@ -19,6 +19,7 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
   const [isDropOpen, setIsDropOpen] = useState(false);
   const [satFilter, setSatFilter] = useState(1600);
   const [actFilter, setActFilter] = useState(34);
+  const [stateFilter, setStateFilter] = useState("");
 
   useEffect(() => {
     let filteredScholarships = [...scholarships];
@@ -50,6 +51,13 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
         (scholarship) => scholarship.gpa <= filterValue
       );
     }
+
+    // if (stateFilter !== "") {
+    //   const filterValue = stateFilter;
+    //   filteredState = filteredState.filter(
+
+    //   )
+    // }
 
     // Apply sorting if isSorted is true
     if (isSorted) {
@@ -105,7 +113,7 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
           <Dropdown title="Race" data={Race} />
           <Dropdown title="Major" data={Major} />
           <Dropdown title="State" data={State} />
-          <button className="h-8 flex items-center">Apply filters</button>
+          <button className="h-8 flex items-center">View favorites</button>
         </div>
 
         <div className="scholarships_sort-container">
@@ -125,12 +133,12 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
               />{" "}
             </button>
             {isDropOpen && (
-              <div className="bg-blue-100 border border-black w-40 rounded-lg z-50">
+              <div className="bg-blue-100 border border-black w-40 rounded-lg absolute z-50">
                 <p
                   className={
                     isSorted
-                      ? "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all bg-blue-300"
-                      : "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all"
+                      ? "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer bg-blue-300"
+                      : "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer "
                   }
                   onClick={alphaSort}
                 >
@@ -139,8 +147,8 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
                 <p
                   className={
                     isAmounttSorted
-                      ? "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all bg-blue-300 z-50"
-                      : "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer transition-all z-50"
+                      ? "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer bg-blue-300 "
+                      : "p-2 hover:outline hover:rounded-lg hover:outline-blue-800 hover:cursor-pointer "
                   }
                   onClick={amountSort}
                 >
