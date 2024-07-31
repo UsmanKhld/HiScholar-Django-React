@@ -85,7 +85,7 @@ export const Navbar = () => {
           </li>
 
           <li className="sidenav-item">
-            <a href="/careers" className="sidenav-link">
+            <a href="/majors" className="sidenav-link">
               <FontAwesomeIcon
                 icon={faBriefcase}
                 className="sidenav-icons fa-2x"

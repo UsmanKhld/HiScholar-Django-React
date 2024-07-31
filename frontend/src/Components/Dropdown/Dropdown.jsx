@@ -32,7 +32,7 @@ export const Dropdown = (props) => {
         />
       </div>
       {isOpen && (
-        <div className="dropdown_menu scrollbar-thin overflow-y-auto">
+        <div className="dropdown_menu absolute scrollbar-thin overflow-y-auto">
           {data.map((item, i) => (
             <div
               key={i}
