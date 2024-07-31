@@ -18,7 +18,7 @@ export const Colleges = () => {
 
 	const fetchData = async (pageNum, query) => {
 		try {
-			const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=DTDHnT3LGJbLZH0dtL0L0IqhSTp281KiKIrLBIJU&page=${pageNum}&per_page=15&fields=id,school.name,latest.student.size,latest.cost.tuition,school.school_url&${
+			const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=DTDHnT3LGJbLZH0dtL0L0IqhSTp281KiKIrLBIJU&page=${pageNum}&per_page=15&fields=id,school.name,school.state,latest.student.size,latest.cost.tuition,school.school_url&${
 				query ? `school.name=${query}` : ""
 			}`;
 			const result = await fetch(url);
@@ -70,30 +70,37 @@ export const Colleges = () => {
 						onChange={handleSearchChange}
 					/>
 				</button>
-
-				<p className="mr-16 text-2xl mb-6 ml-5">College List</p>
+				<p className="mr-16 text-2xl mb-6 ml-5">
+					Find the right colleges for you
+				</p>
 
 				<hr className="border-t-2 border-gray-300 w-full mb-5" />
 
 				<div>
-					<div className="h-screen w-full overflow-y-scroll px-10">
+					<div className="h-128 w-full overflow-y-scroll px-10">
 						{college.map((c) => (
 							<div
 								key={c.id}
 								className="college-card justify-self-center mb-2"
 							>
-								<button className="grid grid-cols-3 w-full border-solid border border-black focus:outline-none bg-gray-100 py-5">
+								<div className="grid grid-cols-5 w-full border-solid border border-black focus:outline-none bg-gray-100 py-5 rounded-lg">
 									<div className="pl-10 self-center">
 										<FontAwesomeIcon
 											onClick={handleFav}
 											icon={faHeart}
-											className="fa-3x mr-3 text-blue-800 hover:cursor-pointer hover:scale-125 transition-all"
+											className="fa-3x mr-3 text-blue-800 hover:cursor-pointer hover:scale-105 transition-all"
 										/>
 									</div>
 									<div className="p-1 col-span-2 self-center text-xl">
 										{c["school.name"]}
 									</div>
-								</button>
+									<div className="pl-10 self-center">
+										More Info
+									</div>
+									<div className="pl-10 self-center">
+										{c["school.state"]}
+									</div>
+								</div>
 							</div>
 						))}
 						<div className="text-center pb-10">
@@ -106,7 +113,7 @@ export const Colleges = () => {
 									onClick={loadMore}
 									className="load-more-button"
 								>
-									Load More
+									Show More Colleges
 								</button>
 							)}
 						</div>
