@@ -20,6 +20,7 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
   const [satFilter, setSatFilter] = useState(1600);
   const [actFilter, setActFilter] = useState(34);
   const [stateFilter, setStateFilter] = useState("");
+  const [isViewFavorites, setIsViewFavorites] = useState(false);
 
   useEffect(() => {
     let filteredScholarships = [...scholarships];
@@ -98,6 +99,10 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
   const handleItemClick = (sc) => {
     setIsModalOpen(true);
     setSelectedItem(sc);
+  };
+
+  const handleViewFavorites = () => {
+    setIsViewFavorites(!isViewFavorites);
   };
 
   return (
