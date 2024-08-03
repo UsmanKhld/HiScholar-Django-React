@@ -69,6 +69,9 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
       filteredScholarships.sort((a, b) => (a.amount < b.amount ? 1 : -1));
     }
 
+    if (isViewFavorites) {
+    }
+
     // Update sortedScholarships state
     setSortedScholarships(filteredScholarships);
   }, [
@@ -118,7 +121,16 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
           <Dropdown title="Race" data={Race} />
           <Dropdown title="Major" data={Major} />
           <Dropdown title="State" data={State} />
-          <button className="h-8 flex items-center">View favorites</button>
+          <button
+            onClick={handleViewFavorites}
+            className={
+              isViewFavorites
+                ? "h-8 bg-blue-200 flex items-center"
+                : "h-8  flex items-center"
+            }
+          >
+            View favorites
+          </button>
         </div>
 
         <div className="scholarships_sort-container">
@@ -171,15 +183,25 @@ export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
         <hr className="border-t-2 border-gray-300 w-full mb-5" />
 
         <div className="w-full h-200 overflow-y-scroll hide_scrollbar">
-          {sortedScholarships.map((sc, i) => (
-            <ScDetails
-              isFav={favorites.some((fav) => fav.id === sc.id)}
-              onToggleFavorite={() => onToggleFavorite(sc)}
-              sch={sc}
-              key={i}
-              onClick={() => handleItemClick(sc)}
-            />
-          ))}
+          {isViewFavorites
+            ? favorites.map((sc, i) => (
+                <ScDetails
+                  isFav={favorites.some((fav) => fav.id === sc.id)}
+                  onToggleFavorite={() => onToggleFavorite(sc)}
+                  sch={sc}
+                  key={i}
+                  onClick={() => handleItemClick(sc)}
+                />
+              ))
+            : sortedScholarships.map((sc, i) => (
+                <ScDetails
+                  isFav={favorites.some((fav) => fav.id === sc.id)}
+                  onToggleFavorite={() => onToggleFavorite(sc)}
+                  sch={sc}
+                  key={i}
+                  onClick={() => handleItemClick(sc)}
+                />
+              ))}
         </div>
 
         {selectedItem && isModalOpen && (
