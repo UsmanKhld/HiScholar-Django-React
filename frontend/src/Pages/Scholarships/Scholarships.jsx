@@ -7,7 +7,7 @@ import {
   faArrowUpWideShort,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GPA, SAT, ACT, Race, Major, State } from "./filters";
+import { GPA, SAT, ACT, Race, Major, State } from "./filters.js";
 import "./Scholarships.css";
 
 export const Scholarships = ({ scholarships, favorites, onToggleFavorite }) => {
